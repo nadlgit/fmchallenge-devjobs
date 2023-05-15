@@ -87,9 +87,6 @@ export const theme = extendTheme({
           },
         },
       },
-      defaultProps: {
-        variant: 'app',
-      },
     },
     Checkbox: {
       variants: {
@@ -112,9 +109,6 @@ export const theme = extendTheme({
             fontWeight: 'bold',
           },
         },
-      },
-      defaultProps: {
-        variant: 'app',
       },
     },
   },

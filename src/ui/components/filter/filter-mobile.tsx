@@ -1,21 +1,8 @@
 import { useState, useRef } from 'react';
-import {
-  Button,
-  Checkbox,
-  Divider,
-  IconButton,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-  Modal,
-  ModalContent,
-  ModalOverlay,
-} from '@chakra-ui/react';
-import { IconCheckbox } from './icon-checkbox';
-import { IconFilter } from './icon-filter';
-import { IconLocation } from './icon-location';
-import { IconSearch } from './icon-search';
+import { Box, Button, Divider, Modal, ModalContent, ModalOverlay } from '@chakra-ui/react';
+import { FullTime } from './fulltime';
+import { Location } from './location';
+import { Title } from './title';
 
 type FilterMobileProps = {
   onFilter: (filters: { title: string; location: string; fullTime: boolean }) => void;
@@ -42,68 +29,30 @@ export const FilterMobile = ({ onFilter }: FilterMobileProps) => {
     onFilter({ title, location, fullTime });
   };
 
-  const titleInputHeight = '5rem';
-  const locationInputHeight = '4.5rem';
-  const modalPadding = '1.5rem';
   return (
-    <>
-      <InputGroup position="absolute" top={0} transform="translateY(-50%)">
-        <Input ref={titleRef} placeholder="Filter by title…" h={titleInputHeight} pr="8.25rem" />
-        <InputRightElement h={titleInputHeight} w="max" gap="0.875rem" mr="1rem" ml="0.875rem">
-          <IconButton
-            aria-label="Other filters"
-            icon={<IconFilter />}
-            onClick={() => setIsModalOpen(true)}
-            variant="ghost"
-            color="darkgrey"
-            _dark={{ color: 'white' }}
-          />
-          <IconButton
-            aria-label="Search"
-            icon={<IconSearch h="1.25rem" w="1.25rem" />}
-            onClick={handleSubmit}
-            variant="button1"
-            h="3rem"
-            w="3rem"
-          />
-        </InputRightElement>
-      </InputGroup>
+    <Box position="absolute" top={0} transform="translateY(-50%)">
+      <Title
+        mobile={{ showOtherFilters: () => setIsModalOpen(true), submit: handleSubmit }}
+        h="5rem"
+      />
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} isCentered>
         <ModalOverlay />
         <ModalContent mx="1.5rem" bgColor="bg.base">
-          <InputGroup>
-            <Input
-              ref={locationRef}
-              defaultValue={locationFilter}
-              placeholder="Filter by location…"
-              h={locationInputHeight}
-              pl="3.5625rem"
-              pr={modalPadding}
-            />
-            <InputLeftElement h={locationInputHeight} w="max" ml={modalPadding}>
-              <IconLocation />
-            </InputLeftElement>
-          </InputGroup>
-
+          <Location ref={locationRef} defaultValue={locationFilter} h="4.5rem" mx="1.5rem" />
           <Divider bgColor="darkgreyalpha" />
-
-          <Checkbox
+          <FullTime
             ref={fullTimeRef}
+            isLarge
             defaultChecked={fullTimeFilter}
-            icon={<IconCheckbox />}
-            spacing="1rem"
-            mx={modalPadding}
-            mt={modalPadding}
-          >
-            Full Time Only
-          </Checkbox>
-
-          <Button onClick={handleSubmit} variant="button1" h="3rem" m={modalPadding}>
+            mx="1.5rem"
+            mt="1.5rem"
+          />
+          <Button onClick={handleSubmit} variant="button1" h="3rem" m="1.5rem">
             Search
           </Button>
         </ModalContent>
       </Modal>
-    </>
+    </Box>
   );
 };

@@ -1,22 +1,16 @@
 import { useRef } from 'react';
-import {
-  Button,
-  Checkbox,
-  Divider,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Stack,
-} from '@chakra-ui/react';
-import { IconCheckbox } from './icon-checkbox';
-import { IconLocation } from './icon-location';
-import { IconSearch } from './icon-search';
+import { Button, Divider, HStack, StackDivider } from '@chakra-ui/react';
+import { FullTime } from './fulltime';
+import { Location } from './location';
+import { Title } from './title';
 
 type FilterProps = {
   onFilter: (filters: { title: string; location: string; fullTime: boolean }) => void;
+  titleLarge?: boolean;
+  fullTimeLarge?: boolean;
 };
 
-export const Filter = ({ onFilter }: FilterProps) => {
+export const Filter = ({ onFilter, titleLarge, fullTimeLarge }: FilterProps) => {
   const titleRef = useRef<HTMLInputElement>(null);
   const locationRef = useRef<HTMLInputElement>(null);
   const fullTimeRef = useRef<HTMLInputElement>(null);
@@ -26,40 +20,31 @@ export const Filter = ({ onFilter }: FilterProps) => {
     const fullTime = !!fullTimeRef.current?.checked;
     onFilter({ title, location, fullTime });
   };
+
   return (
-    <Stack
-      direction="row"
+    <HStack
       position="absolute"
       top={0}
       transform="translateY(-50%)"
       h="5rem"
+      px="1.5rem"
+      gap={0}
       bgColor="bg.base"
+      borderRadius="6px"
     >
-      <InputGroup>
-        <Input ref={titleRef} placeholder="Filter by title…" />
-        <InputLeftElement>
-          <IconSearch color="violet" h="1.5rem" w="1.5rem" />
-        </InputLeftElement>
-      </InputGroup>
-
-      <Divider orientation="vertical" bgColor="darkgreyalpha" />
-
-      <InputGroup>
-        <Input ref={locationRef} placeholder="Filter by location…" />
-        <InputLeftElement>
-          <IconLocation />
-        </InputLeftElement>
-      </InputGroup>
-
-      <Divider orientation="vertical" bgColor="darkgreyalpha" />
-
-      <Checkbox ref={fullTimeRef} icon={<IconCheckbox />} spacing="1rem">
-        Full Time Only
-      </Checkbox>
-
-      <Button onClick={handleSubmit} variant="button1">
+      <Title isLarge={titleLarge} />
+      <CustomDivider />
+      <Location ref={locationRef} />
+      <CustomDivider />
+      <FullTime isLarge={fullTimeLarge} />
+      <StackDivider w="1.5rem" />
+      <Button onClick={handleSubmit} variant="button1" h="3rem">
         Search
       </Button>
-    </Stack>
+    </HStack>
   );
 };
+
+const CustomDivider = () => (
+  <Divider orientation="vertical" bgColor="darkgreyalpha" style={{ marginInline: '1.5rem' }} />
+);
