@@ -1,6 +1,14 @@
 import { useRef } from 'react';
-import { Box, Button, Checkbox, Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
-import { IconCheck } from './icon-check';
+import {
+  Button,
+  Checkbox,
+  Divider,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Stack,
+} from '@chakra-ui/react';
+import { IconCheckbox } from './icon-checkbox';
 import { IconLocation } from './icon-location';
 import { IconSearch } from './icon-search';
 
@@ -19,13 +27,22 @@ export const Filter = ({ onFilter }: FilterProps) => {
     onFilter({ title, location, fullTime });
   };
   return (
-    <Box>
+    <Stack
+      direction="row"
+      position="absolute"
+      top={0}
+      transform="translateY(-50%)"
+      h="5rem"
+      bgColor="bg.base"
+    >
       <InputGroup>
         <Input ref={titleRef} placeholder="Filter by title…" />
         <InputLeftElement>
-          <IconSearch />
+          <IconSearch color="violet" h="1.5rem" w="1.5rem" />
         </InputLeftElement>
       </InputGroup>
+
+      <Divider orientation="vertical" bgColor="darkgreyalpha" />
 
       <InputGroup>
         <Input ref={locationRef} placeholder="Filter by location…" />
@@ -34,9 +51,15 @@ export const Filter = ({ onFilter }: FilterProps) => {
         </InputLeftElement>
       </InputGroup>
 
-      <Checkbox ref={fullTimeRef}>Full Time Only</Checkbox>
+      <Divider orientation="vertical" bgColor="darkgreyalpha" />
 
-      <Button onClick={handleSubmit}>Search</Button>
-    </Box>
+      <Checkbox ref={fullTimeRef} icon={<IconCheckbox />} spacing="1rem">
+        Full Time Only
+      </Checkbox>
+
+      <Button onClick={handleSubmit} variant="button1">
+        Search
+      </Button>
+    </Stack>
   );
 };
