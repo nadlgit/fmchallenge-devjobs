@@ -2,6 +2,8 @@
 
 This is a solution to the [Devjobs web app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/devjobs-web-app-HuvC_LP4l). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
+My personal challenge was to implement a given design using [Chakra UI library](https://chakra-ui.com/).
+
 **=> WORK IN PROGRESS**
 
 ## Overview
