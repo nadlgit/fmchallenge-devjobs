@@ -21,6 +21,7 @@ export const Location = forwardRef<HTMLInputElement, LocationProps>(function Loc
     <Box {...spaceProps}>
       <InputGroup>
         <Input
+          name="location"
           ref={ref}
           variant="app"
           placeholder="Filter by location…"

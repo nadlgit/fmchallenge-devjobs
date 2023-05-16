@@ -9,6 +9,7 @@ export const FullTime = forwardRef<HTMLInputElement, FullTimeProps>(function Ful
 ) {
   return (
     <Checkbox
+      name="fulltime"
       ref={ref}
       variant="app"
       icon={<IconCheckbox />}

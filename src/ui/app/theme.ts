@@ -107,6 +107,7 @@ export const theme = extendTheme({
             },
           },
           label: {
+            width: 'max-content',
             color: 'text.contrast',
             fontSize: '1rem',
             lineHeight: '1.25rem',

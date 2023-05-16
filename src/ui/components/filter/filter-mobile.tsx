@@ -28,16 +28,18 @@ export const FilterMobile = ({ onFilter }: FilterMobileProps) => {
     onFilter({ title, location, fullTime });
   };
 
+  const spaceInline = 'calc((100% - 28rem) / 2)';
   return (
     <Box position="absolute" top={0} transform="translateY(-50%)" w="full">
       <Title
         mobile={{ showOtherFilters: () => setIsModalOpen(true), submit: handleSubmit }}
         h="5rem"
+        px={spaceInline}
       />
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} isCentered>
         <ModalOverlay />
-        <ModalContent mx="1.5rem" bgColor="bg.base">
+        <ModalContent mx={`max(1.5rem, ${spaceInline})`} bgColor="bg.base">
           <Location ref={locationRef} defaultValue={locationFilter} h="4.5rem" mx="1.5rem" />
           <Divider bgColor="darkgreyalpha" />
           <FullTime

@@ -24,9 +24,10 @@ export const Title = forwardRef<HTMLInputElement, TitleProps>(function Title(
   ref
 ) {
   return (
-    <Box {...spaceProps}>
+    <Box minW={mobile ? undefined : 'clamp(11.5rem, calc(32.7vw - 4.5rem), 25rem)'} {...spaceProps}>
       <InputGroup>
         <Input
+          name="title"
           ref={ref}
           variant="app"
           placeholder={isLarge ? 'Filter by title, companies, expertise…' : 'Filter by title…'}

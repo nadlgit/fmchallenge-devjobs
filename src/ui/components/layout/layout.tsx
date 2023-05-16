@@ -22,7 +22,7 @@ export const Layout = () => {
   });
 
   return (
-    <Box h="full" pos="relative">
+    <Box pos="relative" h="full" minW="18.75rem">
       <Box
         pos="absolute"
         h={headerSizes?.height}
