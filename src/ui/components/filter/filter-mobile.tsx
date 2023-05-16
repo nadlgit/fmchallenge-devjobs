@@ -1,12 +1,11 @@
 import { useState, useRef } from 'react';
 import { Box, Button, Divider, Modal, ModalContent, ModalOverlay } from '@chakra-ui/react';
+import { type FilterAction } from './filter-action';
 import { FullTime } from './fulltime';
 import { Location } from './location';
 import { Title } from './title';
 
-type FilterMobileProps = {
-  onFilter: (filters: { title: string; location: string; fullTime: boolean }) => void;
-};
+type FilterMobileProps = { onFilter: FilterAction };
 
 export const FilterMobile = ({ onFilter }: FilterMobileProps) => {
   const titleRef = useRef<HTMLInputElement>(null);

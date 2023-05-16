@@ -6,6 +6,10 @@ export const theme = extendTheme({
     body: 'Kumbh Sans, sans-serif',
     heading: 'Kumbh Sans, sans-serif',
   },
+  breakpoints: {
+    tablet: '48rem',
+    desktop: '80rem',
+  },
   colors: {
     violet: 'hsla(235, 69%, 61%, 1)',
     lightviolet: 'hsla(235, 82%, 77%, 1)',

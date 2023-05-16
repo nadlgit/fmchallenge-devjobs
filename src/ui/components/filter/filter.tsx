@@ -1,11 +1,12 @@
 import { useRef } from 'react';
 import { Button, Divider, HStack, StackDivider } from '@chakra-ui/react';
+import { type FilterAction } from './filter-action';
 import { FullTime } from './fulltime';
 import { Location } from './location';
 import { Title } from './title';
 
 type FilterProps = {
-  onFilter: (filters: { title: string; location: string; fullTime: boolean }) => void;
+  onFilter: FilterAction;
   titleLarge?: boolean;
   fullTimeLarge?: boolean;
 };
