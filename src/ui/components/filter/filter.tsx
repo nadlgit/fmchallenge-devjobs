@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { Button, Divider, HStack, StackDivider } from '@chakra-ui/react';
+import { Button, Divider, Flex, StackDivider } from '@chakra-ui/react';
 import { type FilterAction } from './filter-action';
 import { FullTime } from './fulltime';
 import { Location } from './location';
@@ -23,13 +23,14 @@ export const Filter = ({ onFilter, titleLarge, fullTimeLarge }: FilterProps) => 
   };
 
   return (
-    <HStack
+    <Flex
+      align="center"
       position="absolute"
       top={0}
       transform="translateY(-50%)"
       h="5rem"
+      w="full"
       px="1.5rem"
-      gap={0}
       bgColor="bg.base"
       borderRadius="6px"
     >
@@ -42,7 +43,7 @@ export const Filter = ({ onFilter, titleLarge, fullTimeLarge }: FilterProps) => 
       <Button onClick={handleSubmit} variant="button1" h="3rem">
         Search
       </Button>
-    </HStack>
+    </Flex>
   );
 };
 

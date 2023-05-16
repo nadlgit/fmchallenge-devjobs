@@ -16,26 +16,24 @@ export const Layout = () => {
     base: { height: '8.4375rem', spaceTop: '2rem' },
     tablet: { height: '10rem', spaceTop: '2.625rem' },
   });
+  const spaceInline = useBreakpointValue({
+    base: 'max(1.5rem, calc(4.07vw + 0.546rem))',
+    tablet: 'max(2.5rem, calc(18.6vw - 6.43rem))',
+  });
 
   return (
     <Box h="full" pos="relative">
       <Box
         pos="absolute"
-        w="full"
         h={headerSizes?.height}
+        w="full"
         backgroundImage={bgImage}
         backgroundRepeat="no-repeat"
         backgroundSize="cover"
         borderBottomLeftRadius={{ md: '100px' }}
         zIndex={-1}
       />
-      <Grid
-        templateRows={`${headerSizes?.height} 1fr`}
-        h="full"
-        minW={{ base: '18.75rem', tablet: '43rem' }}
-        w="max"
-        mx="auto"
-      >
+      <Grid templateRows={`${headerSizes?.height} 1fr`} h="full" px={spaceInline}>
         <Flex as="header" justify="space-between" align="start" pt={headerSizes?.spaceTop}>
           <ChakraLink as={RouterLink} href="/" title="Home page">
             <Logo />

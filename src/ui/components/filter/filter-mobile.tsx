@@ -29,7 +29,7 @@ export const FilterMobile = ({ onFilter }: FilterMobileProps) => {
   };
 
   return (
-    <Box position="absolute" top={0} transform="translateY(-50%)">
+    <Box position="absolute" top={0} transform="translateY(-50%)" w="full">
       <Title
         mobile={{ showOtherFilters: () => setIsModalOpen(true), submit: handleSubmit }}
         h="5rem"
