@@ -31,9 +31,9 @@ export const FilterLarge = ({ onFilter, isDesktop }: FilterLargeProps) => {
       borderRadius="6px"
     >
       <Title isLarge={isDesktop} mx="1.5rem" />
-      <Divider orientation="vertical" bgColor="darkgreyalpha" />
+      <Divider orientation="vertical" bgColor="darkgreyalpha.20" />
       <Location ref={locationRef} mx="1.5rem" />
-      <Divider orientation="vertical" bgColor="darkgreyalpha" />
+      <Divider orientation="vertical" bgColor="darkgreyalpha.20" />
       <FullTime isLarge={isDesktop} mx="1.5rem" />
       <Button
         onClick={handleSubmit}

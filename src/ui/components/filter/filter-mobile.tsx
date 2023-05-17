@@ -41,7 +41,7 @@ export const FilterMobile = ({ onFilter }: FilterMobileProps) => {
         <ModalOverlay />
         <ModalContent mx={`max(1.5rem, ${spaceInline})`} bgColor="bg.base">
           <Location ref={locationRef} defaultValue={locationFilter} h="4.5rem" mx="1.5rem" />
-          <Divider bgColor="darkgreyalpha" />
+          <Divider bgColor="darkgreyalpha.20" />
           <FullTime
             ref={fullTimeRef}
             isLarge

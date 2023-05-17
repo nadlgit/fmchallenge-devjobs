@@ -13,17 +13,19 @@ export const theme = extendTheme({
   colors: {
     violet: 'hsla(235, 69%, 61%, 1)',
     lightviolet: 'hsla(235, 82%, 77%, 1)',
-    violetalpha1: 'hsla(235, 69%, 61%, 0.1)',
-    violetalpha2: 'hsla(235, 69%, 61%, 0.35)',
-    whitealpha1: 'hsla(0, 0%, 100%, 0.1)',
-    whitealpha2: 'hsla(0, 0%, 100%, 0.35)',
+    violetalpha: {
+      10: 'hsla(235, 69%, 61%, 0.1)',
+      25: 'hsla(235, 69%, 61%, 0.25)',
+      35: 'hsla(235, 69%, 61%, 0.35)',
+    },
+    whitealpha: { 10: 'hsla(0, 0%, 100%, 0.1)', 35: 'hsla(0, 0%, 100%, 0.35)' },
     verydarkblue: 'hsla(219, 29%, 14%, 1)',
-    verydarkbluealpha: 'hsla(219, 29%, 14%, 0.1)',
+    verydarkbluealpha: { 10: 'hsla(219, 29%, 14%, 0.1)' },
     midnight: 'hsla(219, 29%, 10%, 1)',
     lightgrey: 'hsla(217, 26%, 97%, 1)',
     grey: 'hsla(212, 23%, 69%, 1)',
     darkgrey: 'hsla(214, 17%, 51%, 1)',
-    darkgreyalpha: 'hsla(214, 17%, 51%, 0.2)',
+    darkgreyalpha: { 20: 'hsla(214, 17%, 51%, 0.2)' },
   },
   semanticTokens: {
     colors: {
@@ -34,7 +36,7 @@ export const theme = extendTheme({
       bg: {
         base: { default: 'white', _dark: 'verydarkblue' },
         app: { default: 'lightgrey', _dark: 'midnight' },
-        checkbox: { default: 'verydarkbluealpha', _dark: 'whitealpha1' },
+        checkbox: { default: 'verydarkbluealpha.10', _dark: 'whitealpha.10' },
       },
     },
   },
@@ -70,12 +72,12 @@ export const theme = extendTheme({
         },
         button2: {
           color: 'violet',
-          backgroundColor: 'violetalpha1',
-          _hover: { backgroundColor: 'violetalpha2' },
+          backgroundColor: 'violetalpha.10',
+          _hover: { backgroundColor: 'violetalpha.35' },
           _dark: {
             color: 'white',
-            backgroundColor: 'whitealpha1',
-            _hover: { backgroundColor: 'whitealpha2' },
+            backgroundColor: 'whitealpha.10',
+            _hover: { backgroundColor: 'whitealpha.35' },
           },
         },
       },
@@ -100,10 +102,11 @@ export const theme = extendTheme({
             width: '1.5rem',
             border: 'none',
             backgroundColor: 'bg.checkbox',
+            _hover: { backgroundColor: 'violetalpha.25' },
             _checked: {
               color: 'white',
               backgroundColor: 'violet',
-              _hover: { backgroundColor: 'violet' },
+              _hover: { backgroundColor: 'violetalpha.25' },
             },
           },
           label: {
