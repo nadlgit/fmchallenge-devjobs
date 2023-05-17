@@ -1,6 +1,6 @@
-import { Box, Card, Flex, HStack, Image, Link as ChakraLink, Text } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Box, Card, Flex, HStack, Image, Text } from '@chakra-ui/react';
 import { type JobSummary } from '@/data';
+import { InnerLink } from '@/ui/components';
 
 type JobCardProps = JobSummary;
 
@@ -48,13 +48,9 @@ export const JobCard = ({
       <span>{contract}</span>
     </HStack>
     <Text as="h1" fontSize="1.25rem" lineHeight="1.5rem" fontWeight="bold" color="text.contrast">
-      <ChakraLink
-        as={RouterLink}
-        to={id.toString()}
-        _hover={{ color: 'darkgrey', textDecoration: 'none' }}
-      >
+      <InnerLink href={id.toString()} _hover={{ color: 'darkgrey', textDecoration: 'none' }}>
         {position}
-      </ChakraLink>
+      </InnerLink>
     </Text>
     <Text fontSize="1rem" lineHeight="1.25rem">
       {company}

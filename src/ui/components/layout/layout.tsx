@@ -1,5 +1,6 @@
-import { Box, Flex, Grid, Link as ChakraLink, useBreakpointValue } from '@chakra-ui/react';
-import { Link as RouterLink, Outlet } from 'react-router-dom';
+import { Box, Flex, Grid, useBreakpointValue } from '@chakra-ui/react';
+import { Outlet } from 'react-router-dom';
+import { InnerLink } from '@/ui/components';
 import { Logo } from './logo';
 import { ThemeSwitch } from './theme-switch';
 import bgPatternMobile from './bg-pattern-header-mobile.svg';
@@ -35,9 +36,9 @@ export const Layout = () => {
       />
       <Grid templateRows={`${headerSizes?.height} 1fr`} h="full" px={spaceInline}>
         <Flex as="header" justify="space-between" align="start" pt={headerSizes?.spaceTop}>
-          <ChakraLink as={RouterLink} to="/" title="Home page">
+          <InnerLink href="/" title="Home page">
             <Logo />
-          </ChakraLink>
+          </InnerLink>
           <ThemeSwitch />
         </Flex>
         <Box as="main" pos="relative">
