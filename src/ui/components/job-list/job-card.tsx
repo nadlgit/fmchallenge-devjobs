@@ -17,13 +17,14 @@ export const JobCard = ({
   <Card
     as="article"
     pos="relative"
-    mt="40px"
-    mb="10px"
-    pt="30px"
-    px="10px"
-    pb="10px"
+    minH="14.25rem"
+    mt="1.5625rem"
+    pt="3.0625rem"
+    px="2rem"
+    pb="2rem"
     bgColor="bg.base"
     color="darkgrey"
+    gap="0.875rem"
   >
     <Flex
       pos="absolute"
@@ -58,7 +59,15 @@ export const JobCard = ({
     <Text fontSize="1rem" lineHeight="1.25rem">
       {company}
     </Text>
-    <Text fontSize="0.875rem" lineHeight="1.125rem" fontWeight="bold" color="violet">
+    <Text
+      flexGrow={1}
+      display="flex"
+      alignItems="end"
+      fontSize="0.875rem"
+      lineHeight="1.125rem"
+      fontWeight="bold"
+      color="violet"
+    >
       {location}
     </Text>
   </Card>
