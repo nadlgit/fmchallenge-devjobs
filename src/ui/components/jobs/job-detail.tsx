@@ -1,7 +1,7 @@
 import { type JobInfo } from '@/data';
 import { Box, Button, Flex, HStack, Image, ListItem, OrderedList, Text } from '@chakra-ui/react';
 
-type JobDetailProps = Omit<JobInfo, 'id'>;
+type JobDetailProps = JobInfo;
 
 export const JobDetail = ({
   company,
@@ -42,11 +42,7 @@ export const JobDetail = ({
         >
           {website}
         </Text>
-        <Button
-          //en fait il faut un lien avec un design de bouton
-          onClick={() => window.location.assign(website)}
-          variant="button2"
-        >
+        <Button as="a" href={website} variant="button2">
           Company Site
         </Button>
       </div>
@@ -77,11 +73,7 @@ export const JobDetail = ({
         >
           {location}
         </Text>
-        <Button
-          //en fait il faut un lien avec un design de bouton
-          onClick={() => window.location.assign(apply)}
-          variant="button1"
-        >
+        <Button as="a" href={apply} variant="button1">
           Apply Now
         </Button>
         <Text
@@ -129,11 +121,7 @@ export const JobDetail = ({
         </OrderedList>
       </div>
       <div>
-        <Button
-          //en fait il faut un lien avec un design de bouton
-          onClick={() => window.location.assign(apply)}
-          variant="button1"
-        >
+        <Button as="a" href={apply} variant="button1">
           Apply Now
         </Button>
       </div>
