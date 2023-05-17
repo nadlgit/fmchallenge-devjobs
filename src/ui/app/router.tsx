@@ -12,7 +12,7 @@ export const router = createHashRouter([
         element: <Home />,
       },
       {
-        path: ':jobid',
+        path: ':jobId',
         element: <Detail />,
       },
     ],
