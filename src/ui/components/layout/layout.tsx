@@ -35,7 +35,7 @@ export const Layout = () => {
       />
       <Grid templateRows={`${headerSizes?.height} 1fr`} h="full" px={spaceInline}>
         <Flex as="header" justify="space-between" align="start" pt={headerSizes?.spaceTop}>
-          <ChakraLink as={RouterLink} href="/" title="Home page">
+          <ChakraLink as={RouterLink} to="/" title="Home page">
             <Logo />
           </ChakraLink>
           <ThemeSwitch />
