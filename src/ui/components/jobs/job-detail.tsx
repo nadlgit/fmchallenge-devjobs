@@ -1,5 +1,6 @@
 import { type JobInfo } from '@/data';
-import { Box, Button, Flex, HStack, Image, ListItem, OrderedList, Text } from '@chakra-ui/react';
+import { Box, Button, HStack, ListItem, OrderedList, Text } from '@chakra-ui/react';
+import { CompanyLogo } from './company-logo';
 
 type JobDetailProps = JobInfo;
 
@@ -20,18 +21,7 @@ export const JobDetail = ({
   return (
     <div>
       <div>
-        <Flex
-          // pos="absolute"
-          // top={0}
-          // transform="translateY(-50%)"
-          justify="center"
-          align="center"
-          boxSize="3.125rem"
-          borderRadius="0.9375rem"
-          bgColor={logoBackground}
-        >
-          <Image src={logo} alt={`${company} logo`} />
-        </Flex>
+        <CompanyLogo logo={logo} logoBackground={logoBackground} company={company} />
         <Text
         // fontSize="1rem" lineHeight="1.25rem"
         >

@@ -1,6 +1,7 @@
-import { Box, Card, Flex, HStack, Image, Text } from '@chakra-ui/react';
+import { Box, Card, HStack, Text } from '@chakra-ui/react';
 import { type JobSummary } from '@/data';
 import { InnerLink } from '@/ui/components';
+import { CompanyLogo } from './company-logo';
 
 type JobCardProps = JobSummary;
 
@@ -26,18 +27,12 @@ export const JobCard = ({
     color="darkgrey"
     gap="0.875rem"
   >
-    <Flex
-      pos="absolute"
-      top={0}
-      transform="translateY(-50%)"
-      justify="center"
-      align="center"
-      boxSize="3.125rem"
-      borderRadius="0.9375rem"
-      bgColor={logoBackground}
-    >
-      <Image src={logo} alt={`${company} logo`} />
-    </Flex>
+    <CompanyLogo
+      logo={logo}
+      logoBackground={logoBackground}
+      company={company}
+      position="top-corner"
+    />
     <HStack
       divider={<Box as="span" boxSize="4px" bgColor="darkgrey" borderRadius="full" />}
       spacing="1rem"
