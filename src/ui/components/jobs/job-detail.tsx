@@ -3,14 +3,17 @@ import {
   Box,
   Button,
   Flex,
-  HStack,
   ListItem,
   OrderedList,
   Stack,
   Text,
   useBreakpointValue,
 } from '@chakra-ui/react';
+import { Auxiliary } from './auxiliary';
+import { Company } from './company';
 import { CompanyLogo } from './company-logo';
+import { Location } from './location';
+import { Position } from './position';
 
 type JobDetailProps = JobInfo;
 
@@ -45,14 +48,7 @@ export const JobDetail = ({
           ),
         })}
         <Box>
-          <Text
-            fontSize={{ base: '1.25rem', tablet: '1.5rem' }}
-            lineHeight={{ base: '1.5rem', tablet: '1.875rem' }}
-            fontWeight="bold"
-            color="text.contrast"
-          >
-            {company}
-          </Text>
+          <Company company={company} isHeader />
           <Text fontSize="1rem" lineHeight="1.25rem" color="darkgrey">
             {website}
           </Text>
@@ -64,28 +60,9 @@ export const JobDetail = ({
       <Box bgColor="bg.base">
         <Flex direction={{ base: 'column', tablet: 'row' }}>
           <Box>
-            <HStack
-              divider={<Box as="span" boxSize="4px" bgColor="darkgrey" borderRadius="full" />}
-              spacing="1rem"
-              fontSize="1rem"
-              lineHeight="1.25rem"
-              color="darkgrey"
-            >
-              <span>{postedAt}</span>
-              <span>{contract}</span>
-            </HStack>
-            <Text
-              as="h1"
-              fontSize={{ base: '1.25rem', tablet: '1.75rem' }}
-              lineHeight={{ base: '1.5rem', tablet: '2.125rem' }}
-              fontWeight="bold"
-              color="text.contrast"
-            >
-              {position}
-            </Text>
-            <Text fontSize="0.875rem" lineHeight="1.125rem" fontWeight="bold" color="violet">
-              {location}
-            </Text>
+            <Auxiliary postedAt={postedAt} contract={contract} />
+            <Position position={position} as="h1" isResponsive />
+            <Location location={location} />
           </Box>
           <Button as="a" href={apply} variant="button1">
             Apply Now
@@ -97,12 +74,8 @@ export const JobDetail = ({
       </Box>
       <Flex bgColor="bg.base">
         <Box hideBelow="tablet">
-          <Text fontSize="1.25rem" lineHeight="1.5rem" fontWeight="bold" color="text.contrast">
-            {position}
-          </Text>
-          <Text fontSize="1rem" lineHeight="1.25rem" color="darkgrey">
-            {company}
-          </Text>
+          <Position position={position} />
+          <Company company={company} />
         </Box>
         <Button as="a" href={apply} variant="button1">
           Apply Now

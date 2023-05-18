@@ -1,7 +1,10 @@
-import { Box, Card, HStack, Text } from '@chakra-ui/react';
+import { Card } from '@chakra-ui/react';
 import { type JobSummary } from '@/data';
-import { InnerLink } from '@/ui/components';
+import { Auxiliary } from './auxiliary';
+import { Company } from './company';
 import { CompanyLogo } from './company-logo';
+import { Location } from './location';
+import { Position } from './position';
 
 type JobCardProps = JobSummary;
 
@@ -31,34 +34,9 @@ export const JobCard = ({
       company={company}
       position="top-corner"
     />
-    <HStack
-      divider={<Box as="span" boxSize="4px" bgColor="darkgrey" borderRadius="full" />}
-      spacing="1rem"
-      fontSize="1rem"
-      lineHeight="1.25rem"
-      color="darkgrey"
-    >
-      <span>{postedAt}</span>
-      <span>{contract}</span>
-    </HStack>
-    <Text as="h1" fontSize="1.25rem" lineHeight="1.5rem" fontWeight="bold" color="text.contrast">
-      <InnerLink href={id.toString()} _hover={{ color: 'darkgrey', textDecoration: 'none' }}>
-        {position}
-      </InnerLink>
-    </Text>
-    <Text fontSize="1rem" lineHeight="1.25rem" color="darkgrey">
-      {company}
-    </Text>
-    <Text
-      flexGrow={1}
-      display="flex"
-      alignItems="end"
-      fontSize="0.875rem"
-      lineHeight="1.125rem"
-      fontWeight="bold"
-      color="violet"
-    >
-      {location}
-    </Text>
+    <Auxiliary postedAt={postedAt} contract={contract} />
+    <Position position={position} as="h1" href={id.toString()} />
+    <Company company={company} />
+    <Location location={location} flexGrow={1} display="flex" alignItems="end" />
   </Card>
 );
