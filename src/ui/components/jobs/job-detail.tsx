@@ -1,17 +1,9 @@
 import { type JobInfo } from '@/data';
-import {
-  Box,
-  Button,
-  Flex,
-  ListItem,
-  OrderedList,
-  Stack,
-  Text,
-  useBreakpointValue,
-} from '@chakra-ui/react';
+import { Box, Flex, Stack, Text } from '@chakra-ui/react';
+import { Apply } from './apply';
 import { Auxiliary } from './auxiliary';
+import { DetailSection } from './detail-section';
 import { Company } from './company';
-import { CompanyLogo } from './company-logo';
 import { Location } from './location';
 import { Position } from './position';
 
@@ -33,30 +25,8 @@ export const JobDetail = ({
 }: JobDetailProps) => {
   return (
     <Stack>
-      <Flex direction={{ base: 'column', tablet: 'row' }} bgColor="bg.base">
-        {useBreakpointValue({
-          base: (
-            <CompanyLogo
-              logo={logo}
-              logoBackground={logoBackground}
-              company={company}
-              position="top-center"
-            />
-          ),
-          tablet: (
-            <CompanyLogo logo={logo} logoBackground={logoBackground} company={company} isLarge />
-          ),
-        })}
-        <Box>
-          <Company company={company} isHeader />
-          <Text fontSize="1rem" lineHeight="1.25rem" color="darkgrey">
-            {website}
-          </Text>
-        </Box>
-        <Button as="a" href={website} variant="button2" w="9.25rem">
-          Company Site
-        </Button>
-      </Flex>
+      <Company company={company} logo={logo} logoBackground={logoBackground} website={website} />
+
       <Box bgColor="bg.base">
         <Flex direction={{ base: 'column', tablet: 'row' }}>
           <Box>
@@ -64,38 +34,17 @@ export const JobDetail = ({
             <Position position={position} as="h1" isResponsive />
             <Location location={location} />
           </Box>
-          <Button as="a" href={apply} variant="button1">
-            Apply Now
-          </Button>
+          <Apply apply={apply} />
         </Flex>
+
         <Text>{description}</Text>
-        <Section title="Requirements" data={requirements} />
-        <Section title="What You Will Do" data={role} />
+
+        <DetailSection title="Requirements" data={requirements} />
+
+        <DetailSection title="What You Will Do" data={role} />
       </Box>
-      <Flex bgColor="bg.base">
-        <Box hideBelow="tablet">
-          <Position position={position} />
-          <Company company={company} />
-        </Box>
-        <Button as="a" href={apply} variant="button1">
-          Apply Now
-        </Button>
-      </Flex>
+
+      <Apply apply={apply} position={position} company={company} />
     </Stack>
   );
 };
-
-type SectionProps = { title: string; data: { content: string; items: string[] } };
-const Section = ({ title, data }: SectionProps) => (
-  <>
-    <Text as="h2" fontSize="1.25rem" lineHeight="1.5rem" fontWeight="bold" color="text.contrast">
-      {title}
-    </Text>
-    <Text>{data.content}</Text>
-    <OrderedList>
-      {data.items.map((item, idx) => (
-        <ListItem key={`req${idx}`}>{item}</ListItem>
-      ))}
-    </OrderedList>
-  </>
-);

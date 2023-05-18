@@ -32,7 +32,7 @@ export const JobCard = ({
       logo={logo}
       logoBackground={logoBackground}
       company={company}
-      position="top-corner"
+      placement="top-corner"
     />
     <Auxiliary postedAt={postedAt} contract={contract} />
     <Position position={position} as="h1" href={id.toString()} />

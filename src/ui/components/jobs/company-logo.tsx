@@ -5,7 +5,7 @@ type CompanyLogoProps = {
   logoBackground: string;
   company: string;
   isLarge?: boolean;
-  position?: 'top-corner' | 'top-center';
+  placement?: 'top-corner' | 'top-center';
 };
 
 export const CompanyLogo = ({
@@ -13,7 +13,7 @@ export const CompanyLogo = ({
   logoBackground,
   company,
   isLarge,
-  position,
+  placement,
 }: CompanyLogoProps) => {
   const sizeProps = isLarge
     ? { boxSize: '8.75rem' }
@@ -27,10 +27,10 @@ export const CompanyLogo = ({
       align="center"
       bgColor={logoBackground}
       {...sizeProps}
-      pos={position ? 'absolute' : undefined}
-      top={position ? posTop[position] : undefined}
-      left={position ? posLeft[position] : undefined}
-      transform={position ? posTransform[position] : undefined}
+      pos={placement ? 'absolute' : undefined}
+      top={placement ? posTop[placement] : undefined}
+      left={placement ? posLeft[placement] : undefined}
+      transform={placement ? posTransform[placement] : undefined}
     >
       <Image src={logo} alt={`${company} logo`} />
     </Flex>
