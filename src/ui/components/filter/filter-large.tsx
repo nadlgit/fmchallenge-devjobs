@@ -38,7 +38,6 @@ export const FilterLarge = ({ onFilter, isDesktop }: FilterLargeProps) => {
       <Button
         onClick={handleSubmit}
         variant="button1"
-        h="3rem"
         w="clamp(5rem, calc(6.55vw + 1.86rem), 7.75rem)"
         mr="1rem"
       >

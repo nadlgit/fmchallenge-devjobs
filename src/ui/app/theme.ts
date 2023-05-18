@@ -54,23 +54,17 @@ export const theme = extendTheme({
     },
   },
   components: {
-    Heading: {
-      sizes: {
-        h1: { fontSize: '1.75rem', lineHeight: '2.125rem' },
-        h2: { fontSize: '1.5rem', lineHeight: '1.875rem' },
-        h3: { fontSize: '1.25rem', lineHeight: '1.5rem' },
-        h4: { fontSize: '0.875rem', lineHeight: '1.125rem' },
-      },
-    },
     Button: {
       baseStyle: { fontSize: '1rem', lineHeight: '1.25rem' },
       variants: {
         button1: {
+          minHeight: '3rem',
           color: 'white',
           backgroundColor: 'violet',
           _hover: { backgroundColor: 'lightviolet' },
         },
         button2: {
+          minHeight: '3rem',
           color: 'violet',
           backgroundColor: 'violetalpha.10',
           _hover: { backgroundColor: 'violetalpha.35' },
@@ -117,6 +111,11 @@ export const theme = extendTheme({
             fontWeight: 'bold',
           },
         },
+      },
+    },
+    Card: {
+      baseStyle: {
+        container: { backgroundColor: 'bg.base', color: 'text.base', padding: '1.5rem' },
       },
     },
   },

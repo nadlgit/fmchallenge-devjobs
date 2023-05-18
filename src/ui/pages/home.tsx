@@ -23,13 +23,13 @@ export const Home = () => {
         >
           <JobList list={displayedList} />
           {displayedList.length < fullList.length && (
-            <Button alignSelf="center" variant="button1" h="3rem" w="8.75rem">
+            <Button alignSelf="center" variant="button1" w="8.75rem">
               Load More
             </Button>
           )}
         </Stack>
       ) : (
-        <Card mt={marginTop} mb={marginBottom} p="1.5rem" bgColor="bg.base" color="text.base">
+        <Card mt={marginTop} mb={marginBottom}>
           No match found.
         </Card>
       )}

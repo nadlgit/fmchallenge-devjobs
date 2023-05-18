@@ -23,8 +23,6 @@ export const JobCard = ({
     pt="3.0625rem"
     px="2rem"
     pb="2rem"
-    bgColor="bg.base"
-    color="darkgrey"
     gap="0.875rem"
   >
     <CompanyLogo
@@ -38,6 +36,7 @@ export const JobCard = ({
       spacing="1rem"
       fontSize="1rem"
       lineHeight="1.25rem"
+      color="darkgrey"
     >
       <span>{postedAt}</span>
       <span>{contract}</span>
@@ -47,7 +46,7 @@ export const JobCard = ({
         {position}
       </InnerLink>
     </Text>
-    <Text fontSize="1rem" lineHeight="1.25rem">
+    <Text fontSize="1rem" lineHeight="1.25rem" color="darkgrey">
       {company}
     </Text>
     <Text

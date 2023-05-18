@@ -49,7 +49,7 @@ export const FilterMobile = ({ onFilter }: FilterMobileProps) => {
             mx="1.5rem"
             mt="1.5rem"
           />
-          <Button onClick={handleSubmit} variant="button1" h="3rem" m="1.5rem">
+          <Button onClick={handleSubmit} variant="button1" m="1.5rem">
             Search
           </Button>
         </ModalContent>
