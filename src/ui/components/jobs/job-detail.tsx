@@ -1,5 +1,15 @@
 import { type JobInfo } from '@/data';
-import { Box, Button, HStack, ListItem, OrderedList, Stack, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  HStack,
+  ListItem,
+  OrderedList,
+  Stack,
+  Text,
+  useBreakpointValue,
+} from '@chakra-ui/react';
 import { CompanyLogo } from './company-logo';
 
 type JobDetailProps = JobInfo;
@@ -20,14 +30,24 @@ export const JobDetail = ({
 }: JobDetailProps) => {
   return (
     <Stack>
-      <Box bgColor="bg.base">
-        <CompanyLogo logo={logo} logoBackground={logoBackground} company={company} />
+      <Flex direction={{ base: 'column', tablet: 'row' }} bgColor="bg.base">
+        {useBreakpointValue({
+          base: (
+            <CompanyLogo
+              logo={logo}
+              logoBackground={logoBackground}
+              company={company}
+              position="top-center"
+            />
+          ),
+          tablet: (
+            <CompanyLogo logo={logo} logoBackground={logoBackground} company={company} isLarge />
+          ),
+        })}
         <Box>
           <Text
-            fontSize="1.25rem"
-            lineHeight="1.5rem"
-            // fontSize="1.5rem"
-            // lineHeight="1.875rem"
+            fontSize={{ base: '1.25rem', tablet: '1.5rem' }}
+            lineHeight={{ base: '1.5rem', tablet: '1.875rem' }}
             fontWeight="bold"
             color="text.contrast"
           >
@@ -40,52 +60,54 @@ export const JobDetail = ({
         <Button as="a" href={website} variant="button2" w="9.25rem">
           Company Site
         </Button>
-      </Box>
+      </Flex>
       <Box bgColor="bg.base">
-        <Box>
-          <HStack
-            divider={<Box as="span" boxSize="4px" bgColor="darkgrey" borderRadius="full" />}
-            spacing="1rem"
-            fontSize="1rem"
-            lineHeight="1.25rem"
-            color="darkgrey"
-          >
-            <span>{postedAt}</span>
-            <span>{contract}</span>
-          </HStack>
-          <Text
-            as="h1"
-            fontSize="1.25rem"
-            lineHeight="1.5rem"
-            // fontSize="1.75rem"
-            // lineHeight="2.125rem"
-            fontWeight="bold"
-            color="text.contrast"
-          >
+        <Flex direction={{ base: 'column', tablet: 'row' }}>
+          <Box>
+            <HStack
+              divider={<Box as="span" boxSize="4px" bgColor="darkgrey" borderRadius="full" />}
+              spacing="1rem"
+              fontSize="1rem"
+              lineHeight="1.25rem"
+              color="darkgrey"
+            >
+              <span>{postedAt}</span>
+              <span>{contract}</span>
+            </HStack>
+            <Text
+              as="h1"
+              fontSize={{ base: '1.25rem', tablet: '1.75rem' }}
+              lineHeight={{ base: '1.5rem', tablet: '2.125rem' }}
+              fontWeight="bold"
+              color="text.contrast"
+            >
+              {position}
+            </Text>
+            <Text fontSize="0.875rem" lineHeight="1.125rem" fontWeight="bold" color="violet">
+              {location}
+            </Text>
+          </Box>
+          <Button as="a" href={apply} variant="button1">
+            Apply Now
+          </Button>
+        </Flex>
+        <Text>{description}</Text>
+        <Section title="Requirements" data={requirements} />
+        <Section title="What You Will Do" data={role} />
+      </Box>
+      <Flex bgColor="bg.base">
+        <Box hideBelow="tablet">
+          <Text fontSize="1.25rem" lineHeight="1.5rem" fontWeight="bold" color="text.contrast">
             {position}
           </Text>
-          <Text fontSize="0.875rem" lineHeight="1.125rem" fontWeight="bold" color="violet">
-            {location}
+          <Text fontSize="1rem" lineHeight="1.25rem" color="darkgrey">
+            {company}
           </Text>
         </Box>
         <Button as="a" href={apply} variant="button1">
           Apply Now
         </Button>
-        <Text>{description}</Text>
-        <Section title="Requirements" data={requirements} />
-        <Section title="What You Will Do" data={role} />
-      </Box>
-      <Box bgColor="bg.base">
-        {/* <Text fontSize="1.25rem" lineHeight="1.5rem" fontWeight="bold" color="text.contrast">
-          {position}
-        </Text>
-        <Text fontSize="1rem" lineHeight="1.25rem" color="darkgrey">
-          {company}
-        </Text> */}
-        <Button as="a" href={apply} variant="button1">
-          Apply Now
-        </Button>
-      </Box>
+      </Flex>
     </Stack>
   );
 };
