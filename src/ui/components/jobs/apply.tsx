@@ -1,4 +1,5 @@
-import { Box, Button, Flex, Show } from '@chakra-ui/react';
+import { useRef } from 'react';
+import { Box, Button, Flex, Show, useDimensions } from '@chakra-ui/react';
 import { Company } from './company';
 import { Position } from './position';
 
@@ -9,23 +10,40 @@ type ApplyProps = {
 };
 
 export const Apply = ({ apply, position, company }: ApplyProps) => {
-  const button = (
-    <Button as="a" href={apply} variant="button1">
-      Apply Now
-    </Button>
-  );
+  const elementRef = useRef(null);
+  const dimensions = useDimensions(elementRef, true);
+  const spaceInline = dimensions ? dimensions.marginBox.left : undefined;
+
   if (position && company) {
     return (
-      <Flex bgColor="bg.base">
+      <Flex
+        ref={elementRef}
+        justify={{ base: 'center', tablet: 'space-between' }}
+        align="center"
+        style={{
+          marginInline: spaceInline ? `-${spaceInline}px` : undefined,
+          paddingInline: spaceInline ? `${spaceInline}px` : undefined,
+        }}
+        py="1.5rem"
+        bgColor="bg.base"
+        borderRadius="0.375rem"
+      >
         <Show above="tablet">
           <Box>
             <Position position={position} />
             <Company company={company} />
           </Box>
         </Show>
-        {button}
+        <Button w={{ base: 'full', tablet: '8.75rem' }} as="a" href={apply} variant="button1">
+          Apply Now
+        </Button>
       </Flex>
     );
   }
-  return button;
+
+  return (
+    <Button as="a" href={apply} variant="button1">
+      Apply Now
+    </Button>
+  );
 };

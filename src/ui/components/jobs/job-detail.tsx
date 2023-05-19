@@ -23,10 +23,12 @@ export const JobDetail = ({
   requirements,
   role,
 }: JobDetailProps) => (
-  <Stack spacing="clamp(1.5rem, calc(2.04vw + 1.02rem), 2rem)" mt="-2.5rem">
+  <Box mt="-2.5rem">
     <Company company={company} logo={logo} logoBackground={logoBackground} website={website} />
 
     <Box
+      mt="clamp(1.5rem, calc(2.04vw + 1.02rem), 2rem)"
+      mb="3.5rem"
       px="clamp(1.5rem, calc(6.1vw + 0.07rem), 3rem)"
       py="clamp(2.5rem, calc(2.04vw + 2.02rem), 3rem)"
       bgColor="bg.base"
@@ -53,5 +55,5 @@ export const JobDetail = ({
     </Box>
 
     <Apply apply={apply} position={position} company={company} />
-  </Stack>
+  </Box>
 );
