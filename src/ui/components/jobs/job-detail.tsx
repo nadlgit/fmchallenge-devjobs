@@ -24,7 +24,7 @@ export const JobDetail = ({
   role,
 }: JobDetailProps) => {
   return (
-    <Stack>
+    <Stack mt="-2.5rem">
       <Company company={company} logo={logo} logoBackground={logoBackground} website={website} />
 
       <Box bgColor="bg.base">
