@@ -4,8 +4,6 @@ This is a solution to the [Devjobs web app challenge on Frontend Mentor](https:/
 
 My personal challenge was to implement a given design using [Chakra UI library](https://chakra-ui.com/).
 
-**=> WORK IN PROGRESS**
-
 ## Overview
 
 ### The challenge
@@ -20,7 +18,7 @@ Users should be able to:
 
 ### Screenshot
 
-**=> TODO**
+![](./screenshot.png)
 
 ### Links
 
