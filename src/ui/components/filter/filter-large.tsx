@@ -1,11 +1,11 @@
 import { useRef } from 'react';
 import { Button, Divider, Flex } from '@chakra-ui/react';
-import { type FilterAction } from './filter-action';
+import { type JobFilter } from '@/data';
 import { FullTime } from './fulltime';
 import { Location } from './location';
 import { Title } from './title';
 
-type FilterLargeProps = { onFilter: FilterAction; isDesktop?: boolean };
+type FilterLargeProps = { onFilter: (filter: JobFilter) => void; isDesktop?: boolean };
 
 export const FilterLarge = ({ onFilter, isDesktop }: FilterLargeProps) => {
   const titleRef = useRef<HTMLInputElement>(null);
@@ -14,8 +14,8 @@ export const FilterLarge = ({ onFilter, isDesktop }: FilterLargeProps) => {
   const handleSubmit = () => {
     const title = titleRef.current?.value ?? '';
     const location = locationRef.current?.value ?? '';
-    const fullTime = !!fullTimeRef.current?.checked;
-    onFilter({ title, location, fullTime });
+    const isFullTime = !!fullTimeRef.current?.checked;
+    onFilter({ title, location, isFullTime });
   };
 
   return (
@@ -30,15 +30,14 @@ export const FilterLarge = ({ onFilter, isDesktop }: FilterLargeProps) => {
       bgColor="bg.base"
       borderRadius="6px"
     >
-      <Title isLarge={isDesktop} mx="1.5rem" />
-      <Divider orientation="vertical" bgColor="darkgreyalpha" />
+      <Title ref={titleRef} isLarge={isDesktop} mx="1.5rem" />
+      <Divider orientation="vertical" bgColor="darkgreyalpha.20" />
       <Location ref={locationRef} mx="1.5rem" />
-      <Divider orientation="vertical" bgColor="darkgreyalpha" />
-      <FullTime isLarge={isDesktop} mx="1.5rem" />
+      <Divider orientation="vertical" bgColor="darkgreyalpha.20" />
+      <FullTime ref={fullTimeRef} isLarge={isDesktop} mx="1.5rem" />
       <Button
         onClick={handleSubmit}
         variant="button1"
-        h="3rem"
         w="clamp(5rem, calc(6.55vw + 1.86rem), 7.75rem)"
         mr="1rem"
       >

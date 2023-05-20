@@ -1,11 +1,11 @@
 import { useState, useRef } from 'react';
 import { Box, Button, Divider, Modal, ModalContent, ModalOverlay } from '@chakra-ui/react';
-import { type FilterAction } from './filter-action';
+import { type JobFilter } from '@/data';
 import { FullTime } from './fulltime';
 import { Location } from './location';
 import { Title } from './title';
 
-type FilterMobileProps = { onFilter: FilterAction };
+type FilterMobileProps = { onFilter: (filter: JobFilter) => void };
 
 export const FilterMobile = ({ onFilter }: FilterMobileProps) => {
   const titleRef = useRef<HTMLInputElement>(null);
@@ -17,21 +17,22 @@ export const FilterMobile = ({ onFilter }: FilterMobileProps) => {
   const handleSubmit = () => {
     const title = titleRef.current?.value ?? '';
     let location = locationFilter;
-    let fullTime = fullTimeFilter;
+    let isFullTime = fullTimeFilter;
     if (isModalOpen) {
       location = locationRef.current?.value ?? '';
-      fullTime = !!fullTimeRef.current?.checked;
+      isFullTime = !!fullTimeRef.current?.checked;
       setLocationFilter(location);
-      setFullTimeFilter(fullTime);
+      setFullTimeFilter(isFullTime);
       setIsModalOpen(false);
     }
-    onFilter({ title, location, fullTime });
+    onFilter({ title, location, isFullTime });
   };
 
   const spaceInline = 'calc((100% - 28rem) / 2)';
   return (
     <Box position="absolute" top={0} transform="translateY(-50%)" w="full">
       <Title
+        ref={titleRef}
         mobile={{ showOtherFilters: () => setIsModalOpen(true), submit: handleSubmit }}
         h="5rem"
         px={spaceInline}
@@ -41,7 +42,7 @@ export const FilterMobile = ({ onFilter }: FilterMobileProps) => {
         <ModalOverlay />
         <ModalContent mx={`max(1.5rem, ${spaceInline})`} bgColor="bg.base">
           <Location ref={locationRef} defaultValue={locationFilter} h="4.5rem" mx="1.5rem" />
-          <Divider bgColor="darkgreyalpha" />
+          <Divider bgColor="darkgreyalpha.20" />
           <FullTime
             ref={fullTimeRef}
             isLarge
@@ -49,7 +50,7 @@ export const FilterMobile = ({ onFilter }: FilterMobileProps) => {
             mx="1.5rem"
             mt="1.5rem"
           />
-          <Button onClick={handleSubmit} variant="button1" h="3rem" m="1.5rem">
+          <Button onClick={handleSubmit} variant="button1" m="1.5rem">
             Search
           </Button>
         </ModalContent>
