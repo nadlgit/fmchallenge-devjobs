@@ -1,9 +1,9 @@
 import { useBreakpointValue } from '@chakra-ui/react';
-import { type FilterAction } from './filter-action';
+import { type JobFilter } from '@/data';
 import { FilterLarge } from './filter-large';
 import { FilterMobile } from './filter-mobile';
 
-type FilterProps = { onFilter: FilterAction };
+type FilterProps = { onFilter: (filter: JobFilter) => void };
 
 export const Filter = ({ onFilter }: FilterProps) =>
   useBreakpointValue({
