@@ -7,7 +7,7 @@ const jobs: JobInfo[] = data.map((job) => ({
 }));
 
 export const sampleJobs: JobAPI = {
-  getJob: (jobId: JobInfo['id']) => jobs.find(({ id }) => id === jobId),
+  getJob: (jobId) => jobs.find(({ id }) => id === jobId),
 
   getJobList: ({ filter, offset = 0, limit }) => {
     const filteredJobs = jobs
