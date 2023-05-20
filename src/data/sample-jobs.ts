@@ -3,7 +3,7 @@ import data from './data.json';
 
 const jobs: JobInfo[] = data.map((job) => ({
   ...job,
-  logo: job.logo.replace('./assets/logos/', '/logos/'),
+  logo: job.logo.replace('./assets/logos/', './logos/'),
 }));
 
 export const sampleJobs: JobAPI = {
